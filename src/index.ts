@@ -1,3 +1,5 @@
+const display = document.querySelector("#screen");
+
 function add(num1: number, num2: number): number {
     return num1 + num2;
 }
@@ -36,12 +38,38 @@ function operate(op: Operator, num1: number, num2: number): number {
     }
 }
 
-
-// debug
-const display = document.querySelector("#screen");
-
+// sets the screen display to the specified string value
 function setDisplay(text: string) {
     if (display != null) {
         display.textContent = text;
     }
 }
+
+let currentNumBuffer: number = 0;
+
+// inputs the specified number into the buffer
+function inputNumber(num: number) {
+    if (currentNumBuffer === 0) {
+        currentNumBuffer = num;
+    } else {
+        currentNumBuffer = (currentNumBuffer * 10) + num;
+    }
+
+    setDisplay(currentNumBuffer.toString());
+}
+
+// initializes event handlers
+function init() {
+    document.querySelector("#zero-button").addEventListener("click", e => inputNumber(0));
+    document.querySelector("#one-button").addEventListener("click", e => inputNumber(1));
+    document.querySelector("#two-button").addEventListener("click", e => inputNumber(2));
+    document.querySelector("#three-button").addEventListener("click", e => inputNumber(3));
+    document.querySelector("#four-button").addEventListener("click", e => inputNumber(4));
+    document.querySelector("#five-button").addEventListener("click", e => inputNumber(5));
+    document.querySelector("#six-button").addEventListener("click", e => inputNumber(6));
+    document.querySelector("#seven-button").addEventListener("click", e => inputNumber(7));
+    document.querySelector("#eight-button").addEventListener("click", e => inputNumber(8));
+    document.querySelector("#nine-button").addEventListener("click", e => inputNumber(9));
+}
+
+init();
