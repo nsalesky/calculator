@@ -29,21 +29,16 @@ function setupEventListeners() {
     document.querySelector("#divide-button")!.addEventListener("click", e => selectOp(Operator.Divide));
 
     document.querySelector("#equal-button")!.addEventListener("click", e => {
-        model.apply();
-        setDisplay(model.getCurrentValue());
+        setDisplay(model.calculate());
     });
 }
 
 function updateDigit(digit: number) {
-    model.pushDigit(digit);
-
-    setDisplay(model.getCurrentValue());
+    setDisplay(model.pushDigit(digit));
 }
 
 function selectOp(op: Operator) {
-    model.selectOp(op);
-
-    setDisplay(model.getCurrentValue());
+    setDisplay(model.selectOp(op));
 }
 
 window.addEventListener("load", function() {
